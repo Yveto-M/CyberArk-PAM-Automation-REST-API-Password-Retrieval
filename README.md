@@ -1,16 +1,16 @@
-CyberArk PAM Automation: REST API Password Retrieval
+**CyberArk PAM Automation: REST API Password Retrieval**
 
 &nbsp;
 
-Project Overview
+**Project Overview**
 This project demonstrates a secure, programmatic workflow for retrieving privileged credentials from a CyberArk Vault without human intervention. The goal was to simulate a "Robot User" (e.g., a vulnerability scanner or orchestration tool) that needs to authenticate, locate a specific target account, and retrieve its password securely via the CyberArk REST API.
 
 &nbsp;
 
-Objective: Eliminate hard-coded credentials in scripts by implementing a dynamic API call to the Vault.
+**Objective:** Eliminate hard-coded credentials in scripts by implementing a dynamic API call to the Vault.
 
 
-Phase 1: Identity & Access Configuration
+**Phase 1: Identity & Access Configuration**
 The first step was establishing a digital identity for the automation script. I created a dedicated CyberArk internal user, svc_automation, to act as the service account.
 
 
@@ -36,7 +36,7 @@ Figure 2: The target account securely stored in the Vault.
 &nbsp;
 
 
-Phase 2: The "Blind Robot" Challenge (Permission Engineering)
+**Phase 2: The "Blind Robot" Challenge (Permission Engineering)**
 During initial testing, the script could authenticate but failed to find any accounts, returning a "Safe is Empty" error. This is a common issue known as the "Blind Robot" scenario—the user has permission to access the safe but not to see its contents.
 
 Troubleshooting Steps
@@ -62,7 +62,7 @@ Figure 4: Verified "List", "Use", and "Retrieve" permissions were active.
 &nbsp;
 
 
-Phase 3: The Automation Script (PowerShell)
+**Phase 3: The Automation Script (PowerShell)**
 I developed a custom PowerShell script to interact with the CyberArk REST API. The script handles:
 
 Authentication: Exchanges a password for a secure Session Token.
@@ -85,7 +85,7 @@ Figure 5: Secure credential object handling.
 &nbsp;
 
 
-Phase 4: Execution & Results
+**Phase 4: Execution & Results**
 The final execution validated the entire chain. The script successfully logged in, listed the contents of Tier1_Operations, and retrieved the password for the first available privileged account (adm_recon) as a proof-of-concept.
 
 <img width="830" height="647" alt="Screenshot 2026-01-06 141748" src="https://github.com/user-attachments/assets/87c94c27-af25-4bb6-a8f4-5c6dcc7e3e1c" />
