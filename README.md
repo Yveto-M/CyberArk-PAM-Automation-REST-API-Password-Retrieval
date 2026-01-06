@@ -37,12 +37,12 @@ Figure 2: The target account securely stored in the Vault.
 **Phase 2: The "Blind Robot" Challenge (Permission Engineering)**
 During initial testing, the script could authenticate but failed to find any accounts, returning a "Safe is Empty" error. This is a common issue known as the "Blind Robot" scenario—the user has permission to access the safe but not to see its contents.
 
-Troubleshooting Steps
-List Permissions: I realized the List accounts permission is distinct from Retrieve accounts. Without List, the API search function returns zero results.
+**Troubleshooting Steps**
+**List Permissions:** I realized the List accounts permission is distinct from Retrieve accounts. Without List, the API search function returns zero results.
 
-Confirmation Workflows: I also identified that "Dual Control" (requiring human approval) would break the automation.
+**Confirmation Workflows:** I also identified that "Dual Control" (requiring human approval) would break the automation.
 
-The Fix: I configured the Safe permissions to grant the robot full visibility and bypass manual approvals.
+**The Fix:** I configured the Safe permissions to grant the robot full visibility and bypass manual approvals.
 
 <img width="785" height="431" alt="Screenshot 2026-01-05 180537" src="https://github.com/user-attachments/assets/d41d5a31-16c0-4df7-8fc4-66ba0b007c58" />
 
@@ -63,15 +63,15 @@ Figure 4: Verified "List", "Use", and "Retrieve" permissions were active.
 **Phase 3: The Automation Script (PowerShell)**
 I developed a custom PowerShell script to interact with the CyberArk REST API. The script handles:
 
-Authentication: Exchanges a password for a secure Session Token.
+**Authentication:** Exchanges a password for a secure Session Token.
 
-Error Handling: Manages SSL/TLS trust issues common in lab environments.
+**Error Handling:** Manages SSL/TLS trust issues common in lab environments.
 
-Token Parsing: Dynamically handles both raw string and JSON responses from the PVWA.
+**Token Parsing:** Dynamically handles both raw string and JSON responses from the PVWA.
 
-Retrieval: Enumerates the Safe and extracts the password.
+**Retrieval:** Enumerates the Safe and extracts the password.
 
-Authentication Flow
+**Authentication Flow**
 The script uses Get-Credential to securely capture the robot's password, ensuring it is never hard-coded in the script file itself.
 
 
@@ -94,9 +94,9 @@ Figure 6: Successful execution. The script authenticated, obtained a token, iden
 &nbsp;
 
 
-Technical Key Takeaways
-Least Privilege: The robot user was restricted only to the specific Safe (Tier1_Operations) it needed.
+**Technical Key Takeaways**
+**Least Privilege:** The robot user was restricted only to the specific Safe (Tier1_Operations) it needed.
 
-API Logic: Learned to handle raw API responses and debug HTTP status codes.
+**API Logic:** Learned to handle raw API responses and debug HTTP status codes.
 
-Infrastructure Dependency: Troubleshooting required diagnosing Vault service availability and IIS states during the process.
+**Infrastructure Dependency:** Troubleshooting required diagnosing Vault service availability and IIS states during the process.
