@@ -1,15 +1,11 @@
 **CyberArk PAM Automation: REST API Password Retrieval**
-
 &nbsp;
-
 **Project Overview**
 This project demonstrates a secure, programmatic workflow for retrieving privileged credentials from a CyberArk Vault without human intervention. The goal was to simulate a "Robot User" (e.g., a vulnerability scanner or orchestration tool) that needs to authenticate, locate a specific target account, and retrieve its password securely via the CyberArk REST API.
-
 &nbsp;
-
 **Objective:** Eliminate hard-coded credentials in scripts by implementing a dynamic API call to the Vault.
 
-
+&nbsp;
 **Phase 1: Identity & Access Configuration**
 The first step was establishing a digital identity for the automation script. I created a dedicated CyberArk internal user, svc_automation, to act as the service account.
 
